@@ -1,0 +1,22 @@
+{
+  "name": "gdax-candles",
+  "version": "0.0.1",
+  "description": "A package to connect get event-based candlestick price models from the GDAX cryptocurrency exchange",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/swimclan/gdax-candles.git"
+  },
+  "author": "Matthew Herron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swimclan/gdax-candles/issues"
+  },
+  "homepage": "https://github.com/swimclan/gdax-candles#readme",
+  "dependencies": {
+    "gdax": "github:coinbase/gdax-node"
+  }
+}
