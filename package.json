@@ -11,12 +11,15 @@
     "url": "git+ssh://git@github.com/swimclan/gdax-candles.git"
   },
   "author": "Matthew Herron",
-  "license": "ISC",
+  "license": "GNU",
   "bugs": {
     "url": "https://github.com/swimclan/gdax-candles/issues"
   },
   "homepage": "https://github.com/swimclan/gdax-candles#readme",
   "dependencies": {
-    "gdax": "github:coinbase/gdax-node"
+    "events": "^1.1.1",
+    "gdax": "github:coinbase/gdax-node",
+    "lodash": "^4.17.4",
+    "rxjs": "^5.5.6"
   }
 }
