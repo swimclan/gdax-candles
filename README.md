@@ -42,14 +42,16 @@ Candlestick {
   timestamp: 2018-01-29T04:59:01.112Z,
   open: 1176.6,
   price: 1177,
-  close: null,
+  close: 1177,
   high: 1177,
   low: 1176.6,
   closed: false,
-  height: null,
-  spread: null,
+  height: 0.0003398470688191087,
+  spread: 0.0003398470688191087,
   color: 'green' }
 */
+
+console.log(ethereumChart.candles); // ==> An array of closed candlesticks: [{Candlestick}, {Candlestick}, ...]
 ```
 
 ## Motivation

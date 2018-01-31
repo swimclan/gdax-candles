@@ -22,10 +22,6 @@ class Candlestick {
   }
 
   setClose() {
-    this.close = this.price;
-    this.height = Math.abs(this.open - this.close) / this.close;
-    this.spread = Math.abs(this.high - this.low) / this.close;
-    this.setColor();
     this.closed = true;
   }
 
@@ -34,6 +30,9 @@ class Candlestick {
     this.price = !this.closed ? price : this.price;
     this.high = this.price > this.high ? this.price : this.high;
     this.low = this.price < this.low ? this.price : this.low;
+    this.close = this.price;
+    this.height = Math.abs(this.open - this.close) / this.close;
+    this.spread = Math.abs(this.high - this.low) / this.close;
     this.setColor();
   }
 }
