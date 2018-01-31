@@ -13,9 +13,9 @@ const Chart = require('gdax-candles');
 
 const product = 'ETH-USD';
 const timeframe = '1m'; // supports second, minute and hour intervals (i.e. 1h, 30s, 10m, etc)
-const etheriumChart = new Chart({ product, timeframe }).start();
+const ethereumChart = new Chart({ product, timeframe }).start();
 
-etheriumChart.on('close', candle => {
+ethereumChart.on('close', candle => {
   console.log(candle);
 });
 
@@ -33,7 +33,7 @@ Candlestick {
   color: 'green' }
 */
 
-etheriumChart.on('change', candle => {
+ethereumChart.on('change', candle => {
   console.log(candle);
 });
 
