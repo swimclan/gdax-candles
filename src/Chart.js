@@ -30,7 +30,7 @@ class Chart extends EventEmitter {
       this.emit('open', this.currentCandle);
       return this.price$
       .map(order => {
-        this.currentCandle.updatePrice(Number(order.price), order.time);
+        this.currentCandle.updatePrice(Number(order.price), Number(order.last_size), order.time);
         return this.currentCandle;
       });
     }).subscribe(candle => this.emit('change', candle));

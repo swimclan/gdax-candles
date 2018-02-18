@@ -30,6 +30,7 @@ Candlestick {
   closed: true,
   height: 0.0003398470688191087,
   spread: 0.0003398470688191087,
+  volume: 2.02715,
   color: 'green' }
 */
 
@@ -48,6 +49,7 @@ Candlestick {
   closed: false,
   height: 0.0003398470688191087,
   spread: 0.0003398470688191087,
+  volume: 2.02715,
   color: 'green' }
 */
 

@@ -1,8 +1,9 @@
 const _ = require('lodash');
 const { EventEmitter } = require('events');
-const Gdax = require('gdax');
+const Exchange = require('./Exchange');
 
-let getSocket = product => new Gdax.WebsocketClient([product]);
+let getSocket = product => Exchange.getInstance(product).websocket;
+let getOrderbook = product => Exchange.getInstance(product).orderbook;
 let noop = () => null;
 
 class Price extends EventEmitter {
@@ -19,8 +20,9 @@ class Price extends EventEmitter {
 
   _dispatchListener() {
     const websocket = getSocket(this.product);
+    const orderbook = getOrderbook(this.product);
     websocket.on('message', (e) => {
-      if (e.type === 'done' && e.reason === 'filled' && e.price) {
+      if (e.type === 'ticker') {
         this.lastPrice = Number(e.price);
         this.emit('change', e);
       }

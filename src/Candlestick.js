@@ -11,6 +11,7 @@ class Candlestick {
     this.closed = false;
     this.height = null;
     this.spread = null;
+    this.volume = 0;
   }
 
   setColor() {
@@ -25,7 +26,7 @@ class Candlestick {
     this.closed = true;
   }
 
-  updatePrice(price, time) {
+  updatePrice(price, size, time) {
     this.timestamp = new Date(time);
     this.price = !this.closed ? price : this.price;
     this.high = this.price > this.high ? this.price : this.high;
@@ -33,6 +34,7 @@ class Candlestick {
     this.close = this.price;
     this.height = Math.abs(this.open - this.close) / this.close;
     this.spread = Math.abs(this.high - this.low) / this.close;
+    this.volume += size;
     this.setColor();
   }
 }
