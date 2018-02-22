@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [1.3.0] - 2018-02-17
+### Added
+- Simple moving averages over 10, 20 and 50 candle time periods
+
+### Fixed
+- Fixed initial values for candles when no new price data is observed over the timeframe
+
 ## [1.2.1] - 2018-02-17
 ### Fixed
 - Removed unecessary console.log

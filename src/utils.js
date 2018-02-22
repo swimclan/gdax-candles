@@ -25,3 +25,7 @@ module.exports.timeLeft = (epoch, interval) => {
 module.exports.nextTime = (epoch, interval) => {
   return (Math.floor(epoch/1000) + this.timeLeft(epoch, interval)) * 1000;
 }
+
+module.exports.average = (arr) => {
+  return arr.reduce((acc, val) =>  acc + parseFloat(val, 10), 0) / arr.length;
+}
