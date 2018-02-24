@@ -6,6 +6,6 @@
  *                                    *
 ***************************************/
 
-const Chart = require('./src/chart');
+const Chart = require('./src/Chart');
 
 module.exports = Chart;

@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.3.1] - 2018-02-17
+### Fixed
+- Bug in exporting chart class from index.  Some versions of node are case sensitive on module imports
+
 ## [1.3.0] - 2018-02-17
 ### Added
 - Simple moving averages over 10, 20 and 50 candle time periods
