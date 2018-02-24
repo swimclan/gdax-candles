@@ -1,6 +1,6 @@
 const _ = require('lodash');
-const Price = require('./price');
-const Clock = require('./clock');
+const Price = require('./Price');
+const Clock = require('./Clock');
 const Candlestick = require('./Candlestick');
 const { Observable } = require('rxjs/Rx');
 const { EventEmitter } = require('events');

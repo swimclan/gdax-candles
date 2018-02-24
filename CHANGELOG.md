@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
-## [1.3.1] - 2018-02-17
+## [1.3.2] - 2018-02-24
 ### Fixed
 - Bug in exporting chart class from index.  Some versions of node are case sensitive on module imports
 
