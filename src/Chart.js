@@ -22,9 +22,9 @@ class Chart extends EventEmitter {
     .switchMap(tick => {
       if (this.currentCandle) {
         this.currentCandle.setClose();
-        this.emit('close', this.currentCandle);
         this.lastClose = this.currentCandle.close;
         this.candles.push(_.assign({}, this.currentCandle));
+        this.emit('close', this.currentCandle);
       }
       this.currentCandle = new Candlestick(this.lastClose || this.price.getLastPrice());
       this.emit('open', this.currentCandle);
@@ -33,7 +33,10 @@ class Chart extends EventEmitter {
         this.currentCandle.updatePrice(Number(order.price), Number(order.last_size), order.time);
         return this.currentCandle;
       });
-    }).subscribe(candle => this.emit('change', candle));
+    }).subscribe(
+      candle => this.emit('change', candle),
+      error => this.emit('error', error)
+    );
     return this;
   }
 }

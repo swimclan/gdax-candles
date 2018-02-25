@@ -1,9 +1,15 @@
 const _ = require('lodash');
 const {average} = require('./utils');
 
-let last10 = [];
-let last20 = [];
-let last50 = [];
+let priceVectors = {
+  10: [],
+  20: [],
+  50: [],
+  100: [],
+  200: [],
+  500: [],
+  1000: []
+};
 
 class Candlestick {
   constructor(open) {
@@ -17,11 +23,7 @@ class Candlestick {
     this.height = Math.abs(this.open - this.close) / this.close;
     this.spread = Math.abs(this.high - this.low) / this.close;
     this.volume = 0;
-    this.sma = {
-      10: null,
-      20: null,
-      50: null
-    }
+    this.sma = {};
     this.setColor();
   }
 
@@ -36,17 +38,17 @@ class Candlestick {
   setClose() {
     this.closed = true;
     // Calculate all the sma averages
-    last10.push(this.price);
-    if (last10.length > 10) { last10.shift(); }
-    this.sma[10] = average(last10);
-    
-    last20.push(this.price);
-    if (last20.length > 20) { last20.shift(); }
-    this.sma[20] = average(last20);
+    this.processMovingAverages(priceVectors, this.price);
+  }
 
-    last50.push(this.price);
-    if (last50.length > 50) { last50.shift(); }
-    this.sma[50] = average(last50);
+  processMovingAverages(vectors, price) {
+    Object.keys(vectors).forEach(period => {
+      vectors[period].push(price);
+      if (vectors[period].length > period) {
+        vectors[period].shift();
+        this.sma[period] = average(vectors[period]);
+      }
+    });
   }
 
   updatePrice(price, size, time) {

@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.3.3] - 2018-02-24
+### Added
+- Additional sma periods 100, 200, 1000
+- Ability to only add a sma to the candle when the period has occured
+
 ## [1.3.2] - 2018-02-24
 ### Fixed
 - Bug in exporting chart class from index.  Some versions of node are case sensitive on module imports
