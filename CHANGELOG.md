@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.3.4] - 2018-02-24
+### Added
+- Expoential moving averages seeded by corresponding sma's
+
 ## [1.3.3] - 2018-02-24
 ### Added
 - Additional sma periods 100, 200, 1000

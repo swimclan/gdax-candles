@@ -24,6 +24,7 @@ class Candlestick {
     this.spread = Math.abs(this.high - this.low) / this.close;
     this.volume = 0;
     this.sma = {};
+    this.ema = {};
     this.setColor();
   }
 
@@ -38,16 +39,25 @@ class Candlestick {
   setClose() {
     this.closed = true;
     // Calculate all the sma averages
-    this.processMovingAverages(priceVectors, this.price);
+    this.processSimpleMovingAverages(priceVectors, this.price);
+    this.processExponentialMovingAverages(this.price);
   }
 
-  processMovingAverages(vectors, price) {
+  processSimpleMovingAverages(vectors, price) {
     Object.keys(vectors).forEach(period => {
       vectors[period].push(price);
       if (vectors[period].length > period) {
         vectors[period].shift();
         this.sma[period] = average(vectors[period]);
       }
+    });
+  }
+  
+  processExponentialMovingAverages(price) {
+    Object.keys(this.sma).forEach(period => {
+      const prevEMA = this.ema[period] || this.sma[period];
+      const k = 2 / (parseInt(period, 10) + 1);
+      this.ema[period] = (price * k) + (prevEMA * (1 - k));
     });
   }
 
