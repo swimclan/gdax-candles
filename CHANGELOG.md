@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.3.5] - 2018-02-24
+### Added
+- Updated README to reflect EMA feature
+
 ## [1.3.4] - 2018-02-24
 ### Added
 - Expoential moving averages seeded by corresponding sma's
