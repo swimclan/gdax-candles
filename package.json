@@ -1,6 +1,6 @@
 {
   "name": "gdax-candles",
-  "version": "1.3.5",
+  "version": "1.4.0",
   "description": "A package to connect get event-based candlestick price models from the GDAX cryptocurrency exchange",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,8 @@
   "dependencies": {
     "events": "^1.1.1",
     "gdax": "github:coinbase/gdax-node",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.5",
+    "regression": "^2.0.1",
     "rxjs": "^5.5.6"
   }
 }

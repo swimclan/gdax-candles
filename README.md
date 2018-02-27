@@ -21,31 +21,44 @@ ethereumChart.on('close', candle => {
 
 /*
 Candlestick {
-  timestamp: 2018-01-29T04:56:58.798Z,
-  open: 1176.6,
-  price: 1177,
-  close: 1177,
-  high: 1177,
-  low: 1176.6,
+  timestamp: 2018-02-27T03:34:39.858Z,
+  open: 868,
+  price: 867.81,
+  close: 867.81,
+  high: 868,
+  low: 867.79,
   closed: true,
-  height: 0.0003398470688191087,
-  spread: 0.0003398470688191087,
-  volume: 2.02715,
-  sma: { 
-    '10': 1176.775, 
-    '20': 1175.99112,
-    '50': 1175.021282,
-    '100': 1174.76111111111,
-    '200': 1172.98989898989,
-    '1000': 1170.5454545454 },
-  ema: {
-    '10': 1176.113333333333, 
-    '20': 1176.81762,
-    '50': 1175.04,
-    '100': 1174.972367,
-    '200': 1173.11111111112,
-    '1000': 1171.0112238479 }
-  color: 'green' }
+  height: 0.0002189419342944361,
+  spread: 0.00024198845369382283,
+  volume: 0.9131210700000001,
+  sma: 
+   { '10': 867.8489999999999,
+     '20': 867.7975,
+     '50': 867.1592000000003,
+     '100': 866.3179000000001 },
+  ema: 
+   { '10': 867.841909090909,
+     '20': 867.7986904761906,
+     '50': 867.1847215686278,
+     '100': 866.3474465346535 },
+  color: 'red',
+  regression: 
+   { '10': 
+      { slope: 0.01412121212117,
+        intercept: 867.7854545454546,
+        r2: 0.268415926271891 },
+     '20': 
+      { slope: 0.011902255639084,
+        intercept: 867.6844285714287,
+        r2: 0.483667582510232 },
+     '50': 
+      { slope: 0.043914525810324,
+        intercept: 866.0832941176474,
+        r2: 0.906694650525467 },
+     '100': 
+      { slope: 0.035564536453645,
+        intercept: 864.5574554455447,
+        r2: 0.883706506660936 } } }
 */
 
 ethereumChart.on('change', candle => {
@@ -54,31 +67,20 @@ ethereumChart.on('change', candle => {
 
 /*
 Candlestick {
-  timestamp: 2018-01-29T04:59:01.112Z,
-  open: 1176.6,
-  price: 1177,
-  close: 1177,
-  high: 1177,
-  low: 1176.6,
+  timestamp: 2018-02-27T03:35:58.491Z,
+  open: 867.95,
+  price: 867.9,
+  close: 867.9,
+  high: 867.95,
+  low: 867.79,
   closed: false,
-  height: 0.0003398470688191087,
-  spread: 0.0003398470688191087,
-  volume: 2.02715,
-  sma: { 
-    '10': 1176.775, 
-    '20': 1175.99112,
-    '50': 1175.021282,
-    '100': 1174.76111111111,
-    '200': 1172.98989898989,
-    '1000': 1170.5454545454 },
-  ema: {
-    '10': 1176.113333333333, 
-    '20': 1176.81762,
-    '50': 1175.04,
-    '100': 1174.972367,
-    '200': 1173.11111111112,
-    '1000': 1171.0112238479 }
-  color: 'green' }
+  height: 0.00005761032377009818,
+  spread: 0.000184353036064157,
+  volume: 0.260548,
+  sma: {},
+  ema: {},
+  color: 'red',
+  regression: {} }
 */
 
 console.log(ethereumChart.candles); // ==> An array of closed candlesticks: [{Candlestick}, {Candlestick}, ...]
@@ -86,7 +88,7 @@ console.log(ethereumChart.candles); // ==> An array of closed candlesticks: [{Ca
 
 ## Motivation
 
-This module was created to help cryptocurrency traders to implement chart-based algorithmic trading strategies based on candlestick patterns.  With the numeric models of the candlesticks provided by this library, any quantitative trading strategy can be derived easily.  
+This module was created to help cryptocurrency traders to implement chart-based algorithmic trading strategies based on candlestick patterns.  With the numeric models of the candlesticks provided by this library, many quantitative trading strategies can be derived easily.  
 
 ## Installation
 
@@ -102,7 +104,7 @@ See code example above.
 
 ## Tests
 
-As of now, no tests are available and no plans are in the works to add a testing framework.
+Will be implementing a testing framework when the module reaches a high level of popularity on npm
 
 ## Contributors
 

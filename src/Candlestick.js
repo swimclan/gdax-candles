@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const {average} = require('./utils');
+const regression = require('regression');
 
 let priceVectors = {
   10: [],
@@ -26,6 +27,7 @@ class Candlestick {
     this.sma = {};
     this.ema = {};
     this.setColor();
+    this.regression = {};
   }
 
   setColor() {
@@ -41,6 +43,7 @@ class Candlestick {
     // Calculate all the sma averages
     this.processSimpleMovingAverages(priceVectors, this.price);
     this.processExponentialMovingAverages(this.price);
+    this.processLeastSqaresRegressions(priceVectors);
   }
 
   processSimpleMovingAverages(vectors, price) {
@@ -58,6 +61,17 @@ class Candlestick {
       const prevEMA = this.ema[period] || this.sma[period];
       const k = 2 / (parseInt(period, 10) + 1);
       this.ema[period] = (price * k) + (prevEMA * (1 - k));
+    });
+  }
+
+  processLeastSqaresRegressions(vectors) {
+    Object.keys(this.sma).forEach(period => {
+      if (!this.regression[period]) { this.regression[period] = {} };
+      let data = vectors[period].map((price, i) => [i, price]);
+      let model = regression.linear(data, {order: 2, precision: 15});
+      this.regression[period].slope = model.equation[0];
+      this.regression[period].intercept = model.equation[1];
+      this.regression[period].r2 = model.r2;
     });
   }
 
