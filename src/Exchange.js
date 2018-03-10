@@ -6,9 +6,6 @@ class Exchange {
 
     this.websocket = new Gdax.WebsocketClient([this.product]);
     this._initSocket();
-
-    let orderbookSync = new Gdax.OrderbookSync([this.product]);
-    this.orderbook = orderbookSync.books[this.product];
   }
 
   _initSocket() {

@@ -3,7 +3,6 @@ const { EventEmitter } = require('events');
 const Exchange = require('./Exchange');
 
 let getSocket = product => Exchange.getInstance(product).websocket;
-let getOrderbook = product => Exchange.getInstance(product).orderbook;
 let noop = () => null;
 
 class Price extends EventEmitter {
@@ -20,7 +19,6 @@ class Price extends EventEmitter {
 
   _dispatchListener() {
     const websocket = getSocket(this.product);
-    const orderbook = getOrderbook(this.product);
     websocket.on('message', (e) => {
       if (e.type === 'ticker') {
         this.lastPrice = Number(e.price);

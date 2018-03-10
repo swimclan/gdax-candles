@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.4.1] - 2018-03-10
+### Fixed
+- Removed unecessary order book downloading for performance
+
 ## [1.4.0] - 2018-02-26
 ### Added
 - Added linear regression statistics to the closed candlesticks at the same periods as the sma and ema
