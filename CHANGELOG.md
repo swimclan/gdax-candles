@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.4.2] - 2018-03-10
+### Added
+- Merged change and error events into price observable to get consolidated event emitter for price stream
+
 ## [1.4.1] - 2018-03-10
 ### Fixed
 - Removed unecessary order book downloading for performance
