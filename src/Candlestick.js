@@ -1,20 +1,12 @@
 const _ = require('lodash');
 const {average} = require('./utils');
 const regression = require('regression');
-
-let priceVectors = {
-  10: [],
-  20: [],
-  50: [],
-  100: [],
-  200: [],
-  500: [],
-  1000: []
-};
+const PriceVectors = require('./PriceVectors');
 
 class Candlestick {
-  constructor(open) {
+  constructor(open, product) {
     this.timestamp = new Date();
+    this.product = product;
     this.open = open;
     this.price = this.open;
     this.close = this.open;
@@ -40,7 +32,8 @@ class Candlestick {
 
   setClose() {
     this.closed = true;
-    // Calculate all the sma averages
+    const priceVectors = PriceVectors.getInstance(this.product);
+    // Calculate all the moving averages and linear regressions
     this.processSimpleMovingAverages(priceVectors, this.price);
     this.processExponentialMovingAverages(this.price);
     this.processLeastSqaresRegressions(priceVectors);

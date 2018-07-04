@@ -18,11 +18,4 @@ class Exchange {
   }
 }
 
-let instance;
-
-module.exports.getInstance = (product) => {
-  if (!instance) {
-    instance = new Exchange(product);
-  }
-  return instance;
-};
+module.exports = Exchange;
