@@ -8,8 +8,10 @@ const { EventEmitter } = require('events');
 class Chart extends EventEmitter {
   constructor({ product='BTC-USD', timeframe='1s' }) {
     super();
-    this.price = new Price(product).start();
-    this.clock = new Clock(timeframe).start();
+    this.product = product;
+    this.timeframe = timeframe;
+    this.price = new Price(this.product).start();
+    this.clock = new Clock(this.timeframe).start();
     this.price$ = Observable.merge(
       Observable.fromEvent(this.price, 'change'),
       Observable.fromEvent(this.price, 'error').mergeMap(err => Observable.throw(err))
@@ -29,7 +31,7 @@ class Chart extends EventEmitter {
         this.candles.push(_.assign({}, this.currentCandle));
         this.emit('close', this.currentCandle);
       }
-      this.currentCandle = new Candlestick(this.lastClose || this.price.getLastPrice());
+      this.currentCandle = new Candlestick(this.lastClose || this.price.getLastPrice(), this.product);
       this.emit('open', this.currentCandle);
       return this.price$
       .map(order => {

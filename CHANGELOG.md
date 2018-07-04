@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.5.0] - 2018-07-04
+### Added
+- Ability to instantiate multiple charts for multiple currencies simultaneously
+
 ## [1.4.2] - 2018-03-10
 ### Added
 - Merged change and error events into price observable to get consolidated event emitter for price stream

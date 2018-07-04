@@ -2,7 +2,7 @@ const _ = require('lodash');
 const { EventEmitter } = require('events');
 const Exchange = require('./Exchange');
 
-let getSocket = product => Exchange.getInstance(product).websocket;
+let getSocket = product => new Exchange(product).websocket;
 let noop = () => null;
 
 class Price extends EventEmitter {
