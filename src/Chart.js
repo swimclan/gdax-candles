@@ -11,7 +11,7 @@ class Chart extends EventEmitter {
     this.product = product;
     this.timeframe = timeframe;
     this.price = new Price(this.product).start();
-    this.clock = new Clock(this.timeframe).start();
+    this.clock = new Clock.getInstance(this.timeframe).start();
     this.price$ = Observable.merge(
       Observable.fromEvent(this.price, 'change'),
       Observable.fromEvent(this.price, 'error').mergeMap(err => Observable.throw(err))
@@ -22,17 +22,24 @@ class Chart extends EventEmitter {
     this.lastClose = null;
   }
 
+  closeCandle() {
+    this.currentCandle.setClose();
+    this.lastClose = this.currentCandle.close;
+    this.candles.push(_.assign({}, this.currentCandle));
+    this.emit('close', this.currentCandle);
+  }
+
+  openCandle() {
+    this.currentCandle = new Candlestick(this.lastClose || this.price.getLastPrice(), this.product);
+    this.emit('open', this.currentCandle);
+  }
+
   start() {
     this.clock$
     .switchMap(tick => {
-      if (this.currentCandle) {
-        this.currentCandle.setClose();
-        this.lastClose = this.currentCandle.close;
-        this.candles.push(_.assign({}, this.currentCandle));
-        this.emit('close', this.currentCandle);
-      }
-      this.currentCandle = new Candlestick(this.lastClose || this.price.getLastPrice(), this.product);
-      this.emit('open', this.currentCandle);
+      let myTick = tick.indexOf(this.timeframe) !== -1;
+      myTick && this.currentCandle && this.closeCandle();
+      (myTick || !this.currentCandle) && this.openCandle();
       return this.price$
       .map(order => {
         this.currentCandle.updatePrice(Number(order.price), Number(order.last_size), order.time);

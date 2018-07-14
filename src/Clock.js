@@ -4,27 +4,55 @@ const { timeframeToSec, nextTime } = require('./utils');
 class Clock extends EventEmitter {
   constructor(resolution='1s') {
     super();
+    this.started = false;
     this.resolution = timeframeToSec(resolution);
+    this.resolutions = [];
+    this.nextTimes = {};
+    this.currentTicks = [];
   }
 
   start() {
-    this.now = Date.now().valueOf();
-    this.nextTime();
-    setInterval(this.tick.bind(this), 1);
+    if (!this.started) {
+      this.now = Date.now().valueOf();
+      this.getNextTimes();
+      setInterval(this.tick.bind(this), 1);
+      this.started = true;
+    }
     return this;
   }
 
   tick() {
+    let emit = false;
     this.now = Date.now().valueOf();
-    if (this.now >= this.next) {
-      this.nextTime();
-      this.emit('tick', new Date(this.now));
+    for (var resolution in this.nextTimes) {
+      if (this.now >= this.nextTimes[resolution]) {
+        this.currentTicks.push(resolution);
+        emit = true;
+      }
     }
+    emit && this.emit('tick', this.currentTicks);
+    this.getNextTimes();
+    this.currentTicks = [];
   }
 
-  nextTime() {
-    return this.next = nextTime(this.now, this.resolution);
+  getNextTimes() {
+    this.resolutions.forEach(resolution => {
+      this.nextTimes[resolution] = nextTime(this.now, timeframeToSec(resolution));
+    });
+    return this.nextTimes;
+  }
+
+  addResolution(resolution) {
+    this.resolutions.indexOf(resolution) === -1 && (this.resolutions.push(resolution));
   }
 }
 
-module.exports = Clock;
+let instance;
+
+module.exports.getInstance = function(resolution='1s') {
+  if (!instance) {
+    instance = new Clock(resolution);
+  }
+  instance.addResolution(resolution);
+  return instance;
+}

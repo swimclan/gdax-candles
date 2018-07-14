@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.5.1] - 2018-07-14
+### Fixed
+- Fixed bug where volumes were not consistent across different chart instances of the same product
+
 ## [1.5.0] - 2018-07-04
 ### Added
 - Ability to instantiate multiple charts for multiple currencies simultaneously

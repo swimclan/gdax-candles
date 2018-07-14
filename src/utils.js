@@ -1,9 +1,11 @@
+const units = {
+  s: 1,
+  m: 60,
+  h: 3600
+}
+
 module.exports.timeframeToSec = (timeframe) => {
-  let units = {
-    s: 1,
-    m: 60,
-    h: 3600
-  }
+
   let time = '';
   let unit;
   const tfsplit = timeframe.split('');
@@ -16,6 +18,10 @@ module.exports.timeframeToSec = (timeframe) => {
     }
   }
   return unit && units[unit] && time.length > 0 ? Number(time) * units[unit] : units.s;
+}
+
+module.exports.secToTimeframe = (secs) => {
+  return;
 }
 
 module.exports.timeLeft = (epoch, interval) => {
