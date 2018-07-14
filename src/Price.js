@@ -20,7 +20,7 @@ class Price extends EventEmitter {
   _dispatchListener() {
     const websocket = getSocket(this.product);
     websocket.on('message', (e) => {
-      if (e.type === 'ticker') {
+      if (e.type === 'match') {
         this.lastPrice = Number(e.price);
         this.emit('change', e);
       }

@@ -5,6 +5,12 @@ class Exchange {
     this.product = product;
 
     this.websocket = new Gdax.WebsocketClient([this.product]);
+    this.websocket = new Gdax.WebsocketClient(
+      [this.product],
+      'wss://ws-feed.pro.coinbase.com',
+      null,
+      { channels: ['full'] }
+    );
     this._initSocket();
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "gdax-candles",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "description": "A package to connect get event-based candlestick price models from the GDAX cryptocurrency exchange",
   "main": "index.js",
   "scripts": {

@@ -41,8 +41,8 @@ class Chart extends EventEmitter {
       myTick && this.currentCandle && this.closeCandle();
       (myTick || !this.currentCandle) && this.openCandle();
       return this.price$
-      .map(order => {
-        this.currentCandle.updatePrice(Number(order.price), Number(order.last_size), order.time);
+      .map(match => {
+        this.currentCandle.updatePrice(Number(match.price), Number(match.size), match.time);
         return this.currentCandle;
       });
     }).subscribe(
