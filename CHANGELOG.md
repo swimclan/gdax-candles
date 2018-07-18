@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.5.3] - 2018-07-18
+### Added
+- Reducing Websocket bandwidth usage
+
 ## [1.5.2] - 2018-07-14
 ### Fixed
 - Fixed volume calculations to make them based on order book matches instead of last size on ticker
