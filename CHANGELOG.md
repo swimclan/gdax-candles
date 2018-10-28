@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.6.2] - 2018-10-28
+### Fixed
+- Fixed a bug with the connection keep-alive mechanism
+
 ## [1.6.1] - 2018-10-28
 ### Added
 - Updated dependencies to manage vulnerabilities
