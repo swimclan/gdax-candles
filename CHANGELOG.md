@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.6.1] - 2018-10-28
+### Added
+- Updated dependencies to manage vulnerabilities
+
 ## [1.6.0] - 2018-10-28
 ### Added
 - Socket heartbeat monitoring and reste functionality for connection persistence
