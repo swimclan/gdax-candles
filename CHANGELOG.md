@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.6.0] - 2018-10-28
+### Added
+- Socket heartbeat monitoring and reste functionality for connection persistence
+
 ## [1.5.3] - 2018-07-18
 ### Added
 - Reducing Websocket bandwidth usage
