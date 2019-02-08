@@ -49,7 +49,7 @@ class Exchange {
     if (this.websocket) {
       const _newEvents = { ...this.websocket._events };
       this.websocket.removeAllListeners();
-      this.websocket.socket.close();
+      this.websocket.socket && this.websocket.socket.close();
       this.websocket = null;
       this._initSocket(_newEvents);
     }

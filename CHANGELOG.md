@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.6.3] - 2019-02-07
+### Fixed
+- Only close the socket if it exists otherwise ignore and re-init the connection
+
 ## [1.6.2] - 2018-10-28
 ### Fixed
 - Fixed a bug with the connection keep-alive mechanism
