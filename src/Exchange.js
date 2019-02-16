@@ -20,6 +20,7 @@ class Exchange {
       this.websocket._events = _handlers;
     } else {
       this.websocket.on('error', (err) => {
+        console.error(typeof error === 'object' ? JSON.stringify(err) : err);
         this._resetWebsocket();
       });
       this.websocket.on('message', this._heartbeatCheck.bind(this));

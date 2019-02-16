@@ -14,7 +14,7 @@ class Chart extends EventEmitter {
     this.clock = new Clock.getInstance(this.timeframe).start();
     this.price$ = Observable.merge(
       Observable.fromEvent(this.price, 'change'),
-      Observable.fromEvent(this.price, 'error').mergeMap(err => Observable.throw(err))
+      Observable.fromEvent(this.price, 'error').mergeMap(err => Observable.of(err))
     );
     this.clock$ = Observable.fromEvent(this.clock, 'tick');
     this.candles = [];
