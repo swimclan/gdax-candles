@@ -19,8 +19,8 @@ class Exchange {
     if (_handlers) {
       this.websocket._events = _handlers;
     } else {
-      this.websocket.on('error', (err) => {
-        console.error(typeof error === 'object' ? JSON.stringify(err) : err);
+      this.websocket.on('error', (error) => {
+        console.error(`gdax-candles - ${typeof error === 'object' ? JSON.stringify(error) : error}`);
         this._resetWebsocket();
       });
       this.websocket.on('message', this._heartbeatCheck.bind(this));
