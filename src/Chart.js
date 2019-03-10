@@ -6,10 +6,11 @@ const { Observable } = require('rxjs/Rx');
 const { EventEmitter } = require('events');
 
 class Chart extends EventEmitter {
-  constructor({ product='BTC-USD', timeframe='1s' }) {
+  constructor({ product='BTC-USD', timeframe='1s', accumulation=false }) {
     super();
     this.product = product;
     this.timeframe = timeframe;
+    this.accumulation = accumulation;
     this.price = new Price(this.product).start();
     this.clock = new Clock.getInstance(this.timeframe).start();
     this.price$ = Observable.merge(
@@ -25,7 +26,7 @@ class Chart extends EventEmitter {
   closeCandle() {
     this.currentCandle.setClose();
     this.lastClose = this.currentCandle.close;
-    this.candles.push(_.assign({}, this.currentCandle));
+    this.accumulation && this.candles.push(_.assign({}, this.currentCandle));
     this.emit('close', this.currentCandle);
   }
 

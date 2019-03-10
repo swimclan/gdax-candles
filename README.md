@@ -13,7 +13,8 @@ const Chart = require('gdax-candles');
 
 const product = 'ETH-USD';
 const timeframe = '1m'; // supports second, minute and hour intervals (i.e. 1h, 30s, 10m, etc)
-const ethereumChart = new Chart({ product, timeframe }).start();
+const accumulation = true; // Tell the module to collect all candles in memory (**WARNING** this is kind of a memory leak so only do this if you know what you are doing.  Set to false or dont specify it if you don't!)
+const ethereumChart = new Chart({ product, timeframe, accumulation }).start();
 
 ethereumChart.on('close', candle => {
   console.log(candle);
@@ -79,7 +80,7 @@ Candlestick {
   regression: {} }
 */
 
-console.log(ethereumChart.candles); // ==> An array of closed candlesticks: [{Candlestick}, {Candlestick}, ...]
+console.log(ethereumChart.candles); // ==> An array of closed candlesticks: [{Candlestick}, {Candlestick}, ...]  If you set `accumulation` to false in Chart constructor then this will always be an empty array!!!
 ```
 
 ## Motivation

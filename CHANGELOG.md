@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.7.0] - 2019-03-09
+### Feature
+- Candle accumulation option
+
 ## [1.6.6] - 2019-03-02
 ### Feature
 - Updated error logging
