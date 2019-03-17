@@ -17,7 +17,15 @@ class Exchange {
       { channels: ['matches'] }
     );
     if (_handlers) {
-      this.websocket._events = _handlers;
+      Object.entries(_handlers).forEach(([type, handler]) => {
+        if (Array.isArray(handler)) {
+          handler.forEach(fn => {
+            this.websocket.on(type, fn);
+          });
+        } else {
+          this.websocket.on(type, handler);
+        }
+      });
     } else {
       this.websocket.on('error', (error) => {
         console.error(`gdax-candles - ${typeof error === 'object' ? JSON.stringify(error) : error}`);
@@ -49,9 +57,7 @@ class Exchange {
   _resetWebsocket() {
     if (this.websocket) {
       const _newEvents = { ...this.websocket._events };
-      this.websocket.removeAllListeners();
-      this.websocket.socket && this.websocket.socket.close();
-      this.websocket = null;
+      delete this.websocket;
       this._initSocket(_newEvents);
     }
   }

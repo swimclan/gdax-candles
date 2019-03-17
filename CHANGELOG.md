@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Released]
 
+## [1.7.1] - 2019-03-17
+### Feature
+- Better socket reset functionality
+
 ## [1.7.0] - 2019-03-09
 ### Feature
 - Candle accumulation option
